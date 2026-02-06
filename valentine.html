@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Valentine 💘</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .love-card {
+    background: #fff;
+    border-radius: 25px;
+    padding: 25px;
+    text-align: center;
+    max-width: 380px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    animation: pop 0.8s ease;
+  }
+
+  @keyframes pop { from{transform:scale(0);} to{transform:scale(1);} }
+
+  img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+  }
+
+  h1 { color:#e75480; }
+  p { color:#555; font-size:16px; }
+
+  .floating {
+    position: absolute;
+    animation: fly linear forwards;
+    opacity: 0.85;
+  }
+
+  @keyframes fly {
+    0% { transform: translateY(100vh); opacity:0; }
+    100% { transform: translateY(-120vh) rotate(360deg); opacity:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="love-card">
+  <img src="hello.jpeg" alt="Us 💕">
+  <h1>My Valentine 💖</h1>
+  <p id="message"></p>
+</div>
+
+<script>
+const msg = new URLSearchParams(window.location.search).get('msg');
+document.getElementById('message').textContent = msg || "Happy Valentine ❤️";
+
+const items = ['❤️','🌹'];
+setInterval(() => {
+  const el = document.createElement('div');
+  el.textContent = items[Math.floor(Math.random()*items.length)];
+  el.className = 'floating';
+  el.style.left = Math.random()*100+'vw';
+  el.style.fontSize = (Math.random()*25+15)+'px';
+  el.style.animationDuration = (Math.random()*4+5)+'s';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),9000);
+},250);
+</script>
+
+</body>
+</html>
