@@ -91,7 +91,8 @@ function sayYes() {
   const msg = encodeURIComponent(
     "Malai thaa the yes click garxau. 🥹💖.Tmle malai will you be my valentine vanera sodena vandai theu actually maile estai kai plan garako theye. I am so happy as well as lucky maile tme paye. Thanks for being on my side mero bad phase chalda pani ani thanks for making my day special everyday. I love you sooooo much mero princess.❤️ "
   );
-  window.location.href = "valentine.html?msg=" + msg;
+  // FIXED: Redirect to index.html instead of valentine.html
+  window.location.href = "index.html?msg=" + msg;
 }
 
 function sayNo() {
