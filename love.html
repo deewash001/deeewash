@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+<style>
+  body {
+    margin:0;
+    height:100vh;
+    font-family:'Segoe UI',sans-serif;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  }
+
+  .card {
+    background:#fff;
+    padding:30px 40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 25px 50px rgba(0,0,0,0.2);
+    max-width:350px;
+    animation:pop 0.8s ease;
+    position:relative;
+    z-index:10;
+  }
+
+  h1,h2 { color:#e75480; margin-bottom:12px; }
+  p { color:#555; font-size:15px; }
+
+  #message {
+    margin-top:10px;
+    font-size:14px;
+    color:#ff4d6d;
+    animation: fadeSlide 0.8s ease forwards;
+  }
+
+  @keyframes fadeSlide {
+    from { opacity:0; transform: translateY(10px); }
+    to { opacity:1; transform: translateY(0); }
+  }
+
+  .buttons { margin-top:20px; display:flex; justify-content:center; gap:15px; }
+  button {
+    border:none;
+    padding:12px 25px;
+    font-size:16px;
+    border-radius:30px;
+    cursor:pointer;
+    transition:transform 0.3s, background 0.3s;
+  }
+  #yesBtn { background:#ff4d6d; color:white; }
+  #noBtn { background:#ddd; color:#555; }
+
+  .heart, .rose {
+    position:absolute;
+    font-size:20px;
+    opacity:0.85;
+    animation:float 6s linear;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0); opacity:0; }
+    50% { opacity:1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity:0; }
+  }
+
+  @keyframes pop { from{transform:scale(0);} to{transform:scale(1);} }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Hello mero butki 💕</h1>
+  <p>You are the reason of my happiness meri mayalu. I love you alotttttttttttttt</p>
+  <h2>Will you be my Valentine? 🥹💖</h2>
+  <div id="message"></div>
+
+  <div class="buttons">
+    <button id="yesBtn" onclick="sayYes()">YES ❤️</button>
+    <button id="noBtn" onclick="sayNo()">NO 💔</button>
+  </div>
+</div>
+
+<script>
+let yesScale = 1;
+
+function sayYes() {
+  const msg = encodeURIComponent(
+    "Malai thaa the yes click garxau. 🥹💖.Tmle malai will you be my valentine vanera sodena vandai theu actually maile estai kai plan garako theye. I am so happy as well as lucky maile tme paye. Thanks for being on my side mero bad phase chalda pani ani thanks for making my day special everyday. I love you sooooo much mero princess.❤️ "
+  );
+  window.location.href = "valentine.html?msg=" + msg;
+}
+
+function sayNo() {
+  document.getElementById("noBtn").style.display = "none";
+
+  document.getElementById("message").textContent =
+  "You don't have a NO option, pukuli mayalu 😘 Malai ta lifetime jhelna parxa tmle baby girl sorry laa... ❤️";
+
+  yesScale += 0.3;
+  document.getElementById("yesBtn").style.transform = `scale(${yesScale})`;
+}
+
+const items = ['❤️','🌹'];
+setInterval(() => {
+  const el = document.createElement('div');
+  el.textContent = items[Math.floor(Math.random()*items.length)];
+  el.className = el.textContent === '❤️' ? 'heart' : 'rose';
+  el.style.left = Math.random()*100+'vw';
+  el.style.bottom = '0';
+  el.style.fontSize = (Math.random()*25+15)+'px';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
